@@ -30,18 +30,18 @@ def plot_user_heatmap_outdegree_4layers(inf, df, name, dic, results_dir, map_col
     cbar_column = f'{inf}_(TM,UM,TF,UF)'
 
     # Plotting
-    fig = plt.figure(figsize=(27,25))
+    fig = plt.figure(figsize=(30,25))
     ax = fig.add_subplot(111)
     im = ax.imshow(heatmap, interpolation='nearest', vmin= 0, vmax=20, cmap=f'{map_color}')
     ax.set_yticks(range(5))
     labels = df.columns
-    ax.set_yticklabels(labels, rotation = 45, fontsize = 58, fontweight='bold')
+    ax.set_yticklabels(labels, rotation = 0, fontsize = 58)
     ax.set_xticklabels(ax.get_xticklabels(), fontsize = 60)
-    ax.set_xlabel('Sorted actors according to the strength of influence', fontsize = 55, fontweight='bold')
-    ax.set_title(f'{dic[name]} {inf} source actors influence', fontsize = 60, fontweight='bold')
+    ax.set_xlabel('Sorted actors according to the strength of influence', fontsize = 55)
+    ax.set_title(f'{dic[name]} {inf} source actors influence', fontsize = 60)
     cbar = fig.colorbar(ax=ax, mappable=im, orientation = 'horizontal')
     cbar.ax.tick_params(labelsize=60)
-    cbar.set_label('Transfer Entropy', fontsize = 60, fontweight='bold')
+    cbar.set_label('Transfer Entropy', fontsize = 60)
     ax.set_aspect('auto')
     plt.savefig(f'{results_dir}/{name}_{inf}_out_activity.png')
     return fig
